@@ -1,0 +1,7 @@
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\bin\Debug\C_Sharp_Practice.exe.config
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\bin\Debug\C_Sharp_Practice.exe
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\bin\Debug\C_Sharp_Practice.pdb
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\obj\Debug\C_Sharp_Practice.csprojAssemblyReference.cache
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\obj\Debug\C_Sharp_Practice.csproj.CoreCompileInputs.cache
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\obj\Debug\C_Sharp_Practice.exe
+D:\C_sharp_practice\C_Sharp_Practice\C_Sharp_Practice\obj\Debug\C_Sharp_Practice.pdb
