@@ -21,9 +21,24 @@ namespace C_Sharp_Practice
             Console.WriteLine(c);
             Console.WriteLine();
             Console.WriteLine(d);
-            int e;
-            e = (int)d;
-            Console.WriteLine(e);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //크기가 서로 다른 부동 소수점 형식 사이의 변환
+            float i = 69.6875f;
+            Console.WriteLine("i : {0}", i);
+
+            double j = (double)i;
+            Console.WriteLine("j : {0}", j);
+
+            Console.WriteLine("69.6875 == j : {0}", 69.6875 == j);
+            float x = 0.1f;
+            Console.WriteLine("x : {0}", x);
+
+            double y = (double)x;
+            Console.WriteLine("y : {0}", y);
+
+            Console.WriteLine("0.1 == y : {0}", 0.1 == y);
         }
     }
 }
