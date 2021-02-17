@@ -8,37 +8,20 @@ namespace C_Sharp_Practice
 {
     class Program
     {
+        enum DialogResult { YES, NO, CANCEL, CONFIRM, OK = 99 }
         static void Main(string[] args)
         {
+            //열거형식을 정수로  출력 해보기
+            Console.WriteLine((int)DialogResult.YES);
 
-            string a = "안녕하세요?";
-            string b = "선을로 입니다";
-            bool c = true;
-            object d = a + b + c;
+            DialogResult dia = DialogResult.NO;
+            Console.WriteLine((int)dia);
 
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-            Console.WriteLine(c);
-            Console.WriteLine();
-            Console.WriteLine(d);
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine((int)DialogResult.CANCEL);
+            Console.WriteLine((int)DialogResult.CONFIRM);
+            Console.WriteLine((int)DialogResult.OK);
 
-            //크기가 서로 다른 부동 소수점 형식 사이의 변환
-            float i = 69.6875f;
-            Console.WriteLine("i : {0}", i);
-
-            double j = (double)i;
-            Console.WriteLine("j : {0}", j);
-
-            Console.WriteLine("69.6875 == j : {0}", 69.6875 == j);
-            float x = 0.1f;
-            Console.WriteLine("x : {0}", x);
-
-            double y = (double)x;
-            Console.WriteLine("y : {0}", y);
-
-            Console.WriteLine("0.1 == y : {0}", 0.1 == y);
+            Console.WriteLine("열거형은 C++과 그다지 차이가 없는듯");
         }
     }
 }
