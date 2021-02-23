@@ -10,20 +10,24 @@ namespace C_Sharp_Practice
     {
         static void Main(string[] args)
         {
-            // 관계 연산자
+            // 분기 조거문
 
-            Console.WriteLine("3 > 4 : {0}", 3 > 4);
-            Console.WriteLine("3 >= 4 : {0}", 3 >= 4);
-            Console.WriteLine("3 < 4 : {0}", 3 < 4);
-            Console.WriteLine("3 <= 4 : {0}", 3 <= 4);
-            Console.WriteLine("3 == 4 : {0}", 3 == 4);
-            Console.WriteLine("3 != 4 : {0}", 3 != 4);
+            Console.Write("숫자를 입력하세요. : ");
 
-            // 조건 연산자
-            //피연산자가 3개 이상
+            string input = Console.ReadLine();
+            int number = Int32.Parse(input);
 
-            string result = (10 % 2) == 0 ? "짝수" : "홀수";
-            Console.WriteLine(result);
+            if (number < 0)
+                Console.WriteLine("음수");
+            else if (number > 0)
+                Console.WriteLine("양수");
+            else
+                Console.WriteLine("0");
+
+            if (number % 2 == 0)
+                Console.WriteLine("짝수");
+            else
+                Console.WriteLine("홀수");
         }
     }
 }
