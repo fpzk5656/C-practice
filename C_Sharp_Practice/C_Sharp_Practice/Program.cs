@@ -10,21 +10,27 @@ namespace C_Sharp_Practice
     {
         static void Main(string[] args)
         {
-            // 그리디 알고리즘
-            //500원, 100원, 50원, 10원 짜리들로 최적의 해를 구하는..
+            //반복문에서의 점프문
 
-            int n, result = 0;
-            n = Int32.Parse(Console.ReadLine());
+            // continue;
+            for(int i= 0; i < 10; i++)
+            {
+                if (i % 2 == 0)
+                    continue;
+                Console.WriteLine("{0} : 홀수", i);
+            }
+            // break;
+            while(true)
+            {
+                Console.Write("계속할까요? (예 / 아니오) : ");
+                string answer = Console.ReadLine();
 
-            result += n / 500;
-            n %= 500;
-            result += n / 100;
-            n %= 100;
-            result += n / 50;
-            n %= 50;
-            result += n / 10;
+                if (answer == "아니오")
+                    return;
 
-            Console.WriteLine(result);
+            }
+
+
         }
     }
 }
