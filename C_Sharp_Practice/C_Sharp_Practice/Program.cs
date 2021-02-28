@@ -10,24 +10,16 @@ namespace C_Sharp_Practice
     {
         static void Main(string[] args)
         {
-            //반복문에서의 점프문
+            //중첩 for문 이용한 별찍기
 
-            // continue;
-            for(int i= 0; i < 10; i++)
+            for(int i = 0; i <5; i++)
             {
-                if (i % 2 == 0)
-                    continue;
-                Console.WriteLine("{0} : 홀수", i);
-            }
-            // break;
-            while(true)
-            {
-                Console.Write("계속할까요? (예 / 아니오) : ");
-                string answer = Console.ReadLine();
-
-                if (answer == "아니오")
-                    return;
-
+                for(int j = 0; j <= i; j++)
+                {
+                    //j가 i와 같아질 때까지
+                    Console.Write("*");
+                }
+                Console.WriteLine();
             }
 
 
