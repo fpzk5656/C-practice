@@ -8,33 +8,24 @@ namespace C_Sharp_Practice
 {
     class Program
     {
-        static int Fibonacci(int n)
+        static void Divide(int a, int b, out int quotient, out int remainder)
         {
-            if (n < 2)
-                return n;
-            else
-                return Fibonacci(n - 1) + Fibonacci(n - 2);
-        }
+            //out은 ref랑 비슷하지만 참조한 매개변수에 영향을 주지 않으면 에러가 뜬다.
 
-        static void PrintProfile(string name, string phone)
-        {
-            if (name == "")
-            {
-                Console.WriteLine("이름을 입력해주세요.");
-                return;
-            }
-
-            Console.WriteLine("Name : {0}, Phone : {1}", name, phone);
+            quotient = a / b;
+            remainder = a % b;
         }
 
         static void Main(string[] args)
         {
-            //재귀호출 예시
+            int a = 20;
+            int b = 3;
+            int c;
+            int d;
 
-            Console.WriteLine("10번째 피보나치 수 : {0}", Fibonacci(10));
+            Divide(a, b, out c, out d);
 
-            PrintProfile("", "123-4567");
-            PrintProfile("이창규", "456-1230");
+            Console.WriteLine("a:{0}, b:{1}, a/b:{2}, a%b:{3}", a, b, c, d);
         }
     }
 }
