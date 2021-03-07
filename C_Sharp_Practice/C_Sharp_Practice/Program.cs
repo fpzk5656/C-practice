@@ -8,37 +8,27 @@ namespace C_Sharp_Practice
 {
     class Program
     {
-        //오버로딩(Overloading)
-        static int Plus(int a, int b)
+        static int Sum(params int[] args)
         {
-            Console.WriteLine("Calling int Plus(int,int)...");
-            return a + b;
-        }
+            Console.Write("Summing...");
+            int sum = 0;
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (i > 0)
+                    Console.Write(", ");
 
-        static int Plus(int a, int b, int c)
-        {
-            Console.WriteLine("Calling int Plus(int,int,int)...");
-            return a + b + c;
-        }
+                Console.Write(args[i]);
 
-        static double Plus(double a, double b)
-        {
-            Console.WriteLine("Calling double Plus(double,double)...");
-            return a + b;
+                sum += args[i];
+            }
+            Console.WriteLine();
+            return sum;
         }
-
-        static double Plus(int a, double b)
-        {
-            Console.WriteLine("Calling double Plus(int,double)...");
-            return a + b;
-        }
-
         static void Main(string[] args)
         {
-            Console.WriteLine(Plus(1, 2));
-            Console.WriteLine(Plus(1, 2, 3));
-            Console.WriteLine(Plus(1.0, 2.4));
-            Console.WriteLine(Plus(1, 2.4));
+            int sum = Sum(3, 4, 5, 6, 7, 8, 9, 10);
+
+            Console.WriteLine("Sum : {0}", sum);
         }
     }
 }
