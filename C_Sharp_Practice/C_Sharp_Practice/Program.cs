@@ -6,29 +6,34 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
+    //클래스 사용해보기
+    class Cat
+    {
+        public string Name;
+        public string Color;
+
+        public void Meow()
+        {
+            Console.WriteLine("{0} : 야옹", Name);
+        }
+    }
+
+
     class Program
     {
-        static int Sum(params int[] args)
-        {
-            Console.Write("Summing...");
-            int sum = 0;
-            for (int i = 0; i < args.Length; i++)
-            {
-                if (i > 0)
-                    Console.Write(", ");
-
-                Console.Write(args[i]);
-
-                sum += args[i];
-            }
-            Console.WriteLine();
-            return sum;
-        }
         static void Main(string[] args)
         {
-            int sum = Sum(3, 4, 5, 6, 7, 8, 9, 10);
+            Cat kitty = new Cat();
+            kitty.Name = "키티";
+            kitty.Color = "하얀색";
+            kitty.Meow();
+            Console.WriteLine("{0} : {1}", kitty.Name, kitty.Color);
 
-            Console.WriteLine("Sum : {0}", sum);
+            Cat nero = new Cat();
+            nero.Name = "네로";
+            nero.Color = "검은색";
+            nero.Meow();
+            Console.WriteLine("{0} : {1}", nero.Name, nero.Color);
         }
     }
 }
