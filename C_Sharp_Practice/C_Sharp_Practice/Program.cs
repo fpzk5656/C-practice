@@ -6,34 +6,30 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    //클래스 사용해보기
-    class Cat
+    //얕은 복사 예시
+    class MyClass
     {
-        public string Name;
-        public string Color;
-
-        public void Meow()
-        {
-            Console.WriteLine("{0} : 야옹", Name);
-        }
+        public int A;
+        public int B;
     }
 
-
+    // 클래스는 태생이 참조 형식이기 때문에
+    // 클래스 객체를 다른 클래스 객체에 할당하면,
+    // 둘은 같은 힙 메모리 주소를 갖게 되서,
+    // 서로에게 영향을 끼치게 됌
     class Program
     {
         static void Main(string[] args)
         {
-            Cat kitty = new Cat();
-            kitty.Name = "키티";
-            kitty.Color = "하얀색";
-            kitty.Meow();
-            Console.WriteLine("{0} : {1}", kitty.Name, kitty.Color);
+            MyClass source = new MyClass();
+            source.A = 10;
+            source.B = 20;
 
-            Cat nero = new Cat();
-            nero.Name = "네로";
-            nero.Color = "검은색";
-            nero.Meow();
-            Console.WriteLine("{0} : {1}", nero.Name, nero.Color);
+            MyClass target = source;
+            target.B = 30;
+
+            Console.WriteLine("{0} {1}", source.A, source.B);
+            Console.WriteLine("{0} {1}", target.A, target.B);
         }
     }
 }
