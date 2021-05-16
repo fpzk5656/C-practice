@@ -6,58 +6,49 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    // 얕은 복사 vs 깊은 복사
+    // this 사용
 
-    class MyClass
+    class Employee
     {
-        public int MyField1;
-        public int MyField2;
+        private string Name;
+        private string Position;
 
-        // 여기서 클래스 반환 함수에
-        // 일일이 자신의 멤버를 복사해넣는다.
-        public MyClass DeepCopy()
+        public void SetName(string Name)
         {
-            MyClass newCopy = new MyClass();
-            newCopy.MyField1 = this.MyField1;
-            newCopy.MyField2 = this.MyField2;
+            // 객체 필드인 Name과 매개변수 Name의 구분이 가능해진다.
+            this.Name = Name;
+        }
 
-            return newCopy;
+        public string GetName()
+        {
+            return Name;
+        }
+
+        public void SetPosition(string Position)
+        {
+            this.Position = Position;
+        }
+
+        public string GetPosition()
+        {
+            return this.Position;
         }
     }
-
     class Program
     {
         static void Main(string[] args)
         {
-            //얕은 복사는 서로 같은 힙 메모리를 공유함
-            Console.WriteLine("Shallow Copy");
+            Employee pooh = new Employee();
+            pooh.SetName("Pooh");
+            pooh.SetPosition("Waiter");
+            Console.WriteLine("{0} {1}", pooh.GetName(),
+                pooh.GetPosition());
 
-            {
-                MyClass source = new MyClass();
-                source.MyField1 = 10;
-                source.MyField2 = 20;
-
-                MyClass target = source;
-                target.MyField2 = 30;
-
-                Console.WriteLine("{0} {1}", source.MyField1,source.MyField2);
-                Console.WriteLine("{0} {1}", target.MyField1, target.MyField2);
-            }
-
-            //깊은 복사는 서로 다른 힙 메모리를 지님
-            Console.WriteLine("Deep Copy");
-
-            {
-                MyClass source = new MyClass();
-                source.MyField1 = 10;
-                source.MyField2 = 20;
-
-                MyClass target = source.DeepCopy();
-                target.MyField2 = 30;
-
-                Console.WriteLine("{0} {1}", source.MyField1, source.MyField2);
-                Console.WriteLine("{0} {1}", target.MyField1, target.MyField2);
-            }
+            Employee tigger = new Employee();
+            tigger.SetName("Tigger");
+            tigger.SetPosition("Cleaner");
+            Console.WriteLine("{0} {1}", tigger.GetName(),
+                tigger.GetPosition());
         }
     }
 }
