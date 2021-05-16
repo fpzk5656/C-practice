@@ -6,30 +6,58 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    //얕은 복사 예시
+    // 얕은 복사 vs 깊은 복사
+
     class MyClass
     {
-        public int A;
-        public int B;
+        public int MyField1;
+        public int MyField2;
+
+        // 여기서 클래스 반환 함수에
+        // 일일이 자신의 멤버를 복사해넣는다.
+        public MyClass DeepCopy()
+        {
+            MyClass newCopy = new MyClass();
+            newCopy.MyField1 = this.MyField1;
+            newCopy.MyField2 = this.MyField2;
+
+            return newCopy;
+        }
     }
 
-    // 클래스는 태생이 참조 형식이기 때문에
-    // 클래스 객체를 다른 클래스 객체에 할당하면,
-    // 둘은 같은 힙 메모리 주소를 갖게 되서,
-    // 서로에게 영향을 끼치게 됌
     class Program
     {
         static void Main(string[] args)
         {
-            MyClass source = new MyClass();
-            source.A = 10;
-            source.B = 20;
+            //얕은 복사는 서로 같은 힙 메모리를 공유함
+            Console.WriteLine("Shallow Copy");
 
-            MyClass target = source;
-            target.B = 30;
+            {
+                MyClass source = new MyClass();
+                source.MyField1 = 10;
+                source.MyField2 = 20;
 
-            Console.WriteLine("{0} {1}", source.A, source.B);
-            Console.WriteLine("{0} {1}", target.A, target.B);
+                MyClass target = source;
+                target.MyField2 = 30;
+
+                Console.WriteLine("{0} {1}", source.MyField1,source.MyField2);
+                Console.WriteLine("{0} {1}", target.MyField1, target.MyField2);
+            }
+
+            //깊은 복사는 서로 다른 힙 메모리를 지님
+            Console.WriteLine("Deep Copy");
+
+            {
+                MyClass source = new MyClass();
+                source.MyField1 = 10;
+                source.MyField2 = 20;
+
+                MyClass target = source.DeepCopy();
+                target.MyField2 = 30;
+
+                Console.WriteLine("{0} {1}", source.MyField1, source.MyField2);
+                Console.WriteLine("{0} {1}", target.MyField1, target.MyField2);
+            }
         }
     }
 }
