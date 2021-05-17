@@ -6,49 +6,50 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    // this 사용
+    // 접근한정자 예제
 
-    class Employee
+    class WaterHeater
     {
-        private string Name;
-        private string Position;
+        protected int temperature;
 
-        public void SetName(string Name)
+        public void SetTemperature(int temperature)
         {
-            // 객체 필드인 Name과 매개변수 Name의 구분이 가능해진다.
-            this.Name = Name;
+            if(temperature < -5 || temperature > 42)
+            {
+                throw new Exception("Out of temperature range");
+            }
+
+            // this.temperature는 protected로 선언했지만
+            // 해당 함수는 public 이라서 외부에서 이 함수를 통해 접근 가능하다.
+            this.temperature = temperature;
         }
 
-        public string GetName()
+        internal void TurnOnWater()
         {
-            return Name;
-        }
-
-        public void SetPosition(string Position)
-        {
-            this.Position = Position;
-        }
-
-        public string GetPosition()
-        {
-            return this.Position;
+            Console.WriteLine("Turn on water : {0} ", temperature);
         }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Employee pooh = new Employee();
-            pooh.SetName("Pooh");
-            pooh.SetPosition("Waiter");
-            Console.WriteLine("{0} {1}", pooh.GetName(),
-                pooh.GetPosition());
+            try
+            {
+                WaterHeater heater = new WaterHeater();
+                heater.SetTemperature(20);
+                heater.TurnOnWater();
 
-            Employee tigger = new Employee();
-            tigger.SetName("Tigger");
-            tigger.SetPosition("Cleaner");
-            Console.WriteLine("{0} {1}", tigger.GetName(),
-                tigger.GetPosition());
+                heater.SetTemperature(-2);
+                heater.TurnOnWater();
+
+                heater.SetTemperature(50);
+                heater.TurnOnWater();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
