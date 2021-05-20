@@ -6,50 +6,41 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    // 접근한정자 예제
+    // 생성자는 기반 클래스 -> 파생 클래스 순서지만,
+    // 소멸자는 파생 클래스 -> 기반 클래스 순이다.
 
-    class WaterHeater
+        //ef는 실험용으로 소멸자가 데이터를 소멸하기 전에 소멸자 안의 내용을 실행하나 궁금해서 실험함
+    class Base
     {
-        protected int temperature;
-
-        public void SetTemperature(int temperature)
+        public Base()
         {
-            if(temperature < -5 || temperature > 42)
-            {
-                throw new Exception("Out of temperature range");
-            }
-
-            // this.temperature는 protected로 선언했지만
-            // 해당 함수는 public 이라서 외부에서 이 함수를 통해 접근 가능하다.
-            this.temperature = temperature;
+            Console.WriteLine("Base()");
         }
-
-        internal void TurnOnWater()
+        ~Base()
         {
-            Console.WriteLine("Turn on water : {0} ", temperature);
+            Console.WriteLine("~Base()");
         }
     }
 
+    class Derived : Base
+    {
+        public Derived()
+        {
+            Console.WriteLine("Derived()");
+            Console.WriteLine(ef);
+        }
+        int ef = 7;
+        ~Derived()
+        {
+            Console.WriteLine(ef);
+            Console.WriteLine("~Derived()");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            try
-            {
-                WaterHeater heater = new WaterHeater();
-                heater.SetTemperature(20);
-                heater.TurnOnWater();
-
-                heater.SetTemperature(-2);
-                heater.TurnOnWater();
-
-                heater.SetTemperature(50);
-                heater.TurnOnWater();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Derived derived = new Derived();
         }
     }
 }
