@@ -6,41 +6,57 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    // 생성자는 기반 클래스 -> 파생 클래스 순서지만,
-    // 소멸자는 파생 클래스 -> 기반 클래스 순이다.
-
-        //ef는 실험용으로 소멸자가 데이터를 소멸하기 전에 소멸자 안의 내용을 실행하나 궁금해서 실험함
     class Base
     {
-        public Base()
+        protected string Name;
+        //결국 밑에 모든 함수들 포함해서 이 생성자에 매개변수로 받는 것을 할당 받은
+        //this.Name을 뿌려줄뿐
+        public Base(string Name)    
         {
-            Console.WriteLine("Base()");
+            this.Name = Name;
+            Console.WriteLine("{0}.Base()", this.Name);
         }
+
         ~Base()
         {
-            Console.WriteLine("~Base()");
+            Console.WriteLine("{0}.~Base()", this.Name);
+        }
+
+        public void BaseMethod()
+        {
+            Console.WriteLine("{0}.BaseMethod()", this.Name);
         }
     }
 
     class Derived : Base
     {
-        public Derived()
+        public Derived(string Name) : base(Name)
         {
-            Console.WriteLine("Derived()");
-            Console.WriteLine(ef);
+            Console.WriteLine("{0}.Derived()", this.Name);
         }
-        int ef = 7;
+
         ~Derived()
         {
-            Console.WriteLine(ef);
-            Console.WriteLine("~Derived()");
+            Console.WriteLine("{0}.~Derived()", this.Name);
+        }
+
+        public void DerivedMethod()
+        {
+            Console.WriteLine("{0}.DerivedMethod()", Name);
         }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Derived derived = new Derived();
+            Base a = new Base("a");
+            a.BaseMethod();
+
+            Derived b = new Derived("b");
+            b.BaseMethod();
+            b.DerivedMethod();
+           
         }
     }
 }
