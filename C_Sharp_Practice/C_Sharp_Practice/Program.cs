@@ -6,43 +6,28 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    class Base
+    // is 와 as를 이용한 객체 형식 변환
+    class Mammal
     {
-        protected string Name;
-        //결국 밑에 모든 함수들 포함해서 이 생성자에 매개변수로 받는 것을 할당 받은
-        //this.Name을 뿌려줄뿐
-        public Base(string Name)    
+        public void Nurse()
         {
-            this.Name = Name;
-            Console.WriteLine("{0}.Base()", this.Name);
+            Console.WriteLine("Nurse()");
         }
-
-        ~Base()
+    }
+    
+    class Dog : Mammal
+    {
+        public void Bark()
         {
-            Console.WriteLine("{0}.~Base()", this.Name);
-        }
-
-        public void BaseMethod()
-        {
-            Console.WriteLine("{0}.BaseMethod()", this.Name);
+            Console.WriteLine("Bark()");
         }
     }
 
-    class Derived : Base
+    class Cat : Mammal
     {
-        public Derived(string Name) : base(Name)
+        public void Meow()
         {
-            Console.WriteLine("{0}.Derived()", this.Name);
-        }
-
-        ~Derived()
-        {
-            Console.WriteLine("{0}.~Derived()", this.Name);
-        }
-
-        public void DerivedMethod()
-        {
-            Console.WriteLine("{0}.DerivedMethod()", Name);
+            Console.WriteLine("Meow()");
         }
     }
 
@@ -50,13 +35,25 @@ namespace C_Sharp_Practice
     {
         static void Main(string[] args)
         {
-            Base a = new Base("a");
-            a.BaseMethod();
+            Mammal mammal = new Dog();
+            Dog dog;
 
-            Derived b = new Derived("b");
-            b.BaseMethod();
-            b.DerivedMethod();
-           
+            if(mammal is Dog)
+            {
+                dog = (Dog)mammal;
+                dog.Bark();
+            }
+
+            Mammal mammal2 = new Cat();
+            Cat cat = mammal2 as Cat;
+            if (cat != null)
+                cat.Meow();
+
+            Cat cat2 = mammal as Cat;
+            if (cat2 != null)
+                cat2.Meow();
+            else
+                Console.WriteLine("cat2 is not a Cat");
         }
     }
 }
