@@ -6,28 +6,30 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice
 {
-    // is 와 as를 이용한 객체 형식 변환
-    class Mammal
+    class ArmorSuite
     {
-        public void Nurse()
+        public virtual void Initialize()
         {
-            Console.WriteLine("Nurse()");
-        }
-    }
-    
-    class Dog : Mammal
-    {
-        public void Bark()
-        {
-            Console.WriteLine("Bark()");
+            Console.WriteLine("Armored");
         }
     }
 
-    class Cat : Mammal
+    class IronMan : ArmorSuite
     {
-        public void Meow()
+        public override void Initialize()
         {
-            Console.WriteLine("Meow()");
+            base.Initialize();
+            Console.WriteLine("Repulsor Rays Armed");
+        }
+    }
+
+    class WarMachine : ArmorSuite
+    {
+        public override void Initialize()
+        {
+            base.Initialize();
+            Console.WriteLine("Double-Barrel Cannons Armed");
+            Console.WriteLine("Micro-Rocket Launcher Armed");
         }
     }
 
@@ -35,25 +37,17 @@ namespace C_Sharp_Practice
     {
         static void Main(string[] args)
         {
-            Mammal mammal = new Dog();
-            Dog dog;
+            Console.WriteLine("Creating ArmorSuite...");
+            ArmorSuite armorsuite = new ArmorSuite();
+            armorsuite.Initialize();
 
-            if(mammal is Dog)
-            {
-                dog = (Dog)mammal;
-                dog.Bark();
-            }
+            Console.WriteLine("\nCreating IronMan...");
+            ArmorSuite ironMan = new IronMan();
+            ironMan.Initialize();
 
-            Mammal mammal2 = new Cat();
-            Cat cat = mammal2 as Cat;
-            if (cat != null)
-                cat.Meow();
-
-            Cat cat2 = mammal as Cat;
-            if (cat2 != null)
-                cat2.Meow();
-            else
-                Console.WriteLine("cat2 is not a Cat");
+            Console.WriteLine("\nCreating WarMachine");
+            ArmorSuite warMachine = new WarMachine();
+            warMachine.Initialize();
         }
     }
 }
